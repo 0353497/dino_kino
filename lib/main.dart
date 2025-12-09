@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData(fontFamily: "alatsi"),
+      theme: ThemeData(fontFamily: "alatsi", colorScheme: ColorScheme.dark()),
       home: MainViewPage(),
     );
   }
@@ -36,7 +36,10 @@ class MainViewPage extends StatelessWidget {
               ),
             ),
             TabBar(
-              indicatorColor: Colors.lightGreenAccent,
+              dividerColor: Colors.transparent,
+              indicatorColor: Color(0xffb5e200),
+              unselectedLabelColor: Color(0xffb5e200).withAlpha(100),
+              labelColor: Color(0xffb5e200),
               tabs: [
                 Tab(icon: Icon(Icons.house)),
                 Tab(icon: Icon(Icons.movie_creation)),

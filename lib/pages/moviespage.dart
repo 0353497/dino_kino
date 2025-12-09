@@ -19,32 +19,37 @@ class _MoviespageState extends State<Moviespage> {
         Positioned.fill(
           child: Image.asset("assets/images/bg.png", fit: BoxFit.fill),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "All movies",
-              style: TextStyle(color: Colors.white, fontSize: 24),
-            ),
-            FutureBuilder(
-              future: JsonReader.readJson("assets/json/movies.json"),
-              builder: (context, asyncSnapshot) {
-                if (asyncSnapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                final movies = asyncSnapshot.data!;
-                return Expanded(
-                  child: GridView.count(
-                    childAspectRatio: 1 / 1.8,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
-                    crossAxisCount: 2,
-                    children: [for (var movie in movies) DinoCard(dino: movie)],
-                  ),
-                );
-              },
-            ),
-          ],
+        SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "All movies",
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              FutureBuilder(
+                future: JsonReader.readJson("assets/json/movies.json"),
+                builder: (context, asyncSnapshot) {
+                  if (asyncSnapshot.connectionState ==
+                      ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  final movies = asyncSnapshot.data!;
+                  return Expanded(
+                    child: GridView.count(
+                      childAspectRatio: 1 / 1.8,
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
+                      crossAxisCount: 2,
+                      children: [
+                        for (var movie in movies) DinoCard(dino: movie),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -80,7 +85,15 @@ class DinoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             spacing: 12,
             children: [
-              Image.asset("assets/${dino["image"]}"),
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(16),
+                  child: Image.asset(
+                    "assets/${dino["image"]}",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               Text(
                 "${dino["title"]}",
                 style: TextStyle(color: Colors.white, fontSize: 24),
@@ -89,23 +102,23 @@ class DinoCard extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.star,
-                    color: rating > 1 ? Colors.greenAccent : Colors.grey,
+                    color: rating > 1 ? Color(0xffb5e200) : Colors.grey,
                   ),
                   Icon(
                     Icons.star,
-                    color: rating > 2 ? Colors.greenAccent : Colors.grey,
+                    color: rating > 2 ? Color(0xffb5e200) : Colors.grey,
                   ),
                   Icon(
                     Icons.star,
-                    color: rating > 3 ? Colors.greenAccent : Colors.grey,
+                    color: rating > 3 ? Color(0xffb5e200) : Colors.grey,
                   ),
                   Icon(
                     Icons.star,
-                    color: rating > 4 ? Colors.greenAccent : Colors.grey,
+                    color: rating > 4 ? Color(0xffb5e200) : Colors.grey,
                   ),
                   Icon(
                     Icons.star,
-                    color: rating > 5 ? Colors.greenAccent : Colors.grey,
+                    color: rating > 5 ? Color(0xffb5e200) : Colors.grey,
                   ),
                 ],
               ),

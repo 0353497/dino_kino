@@ -17,6 +17,8 @@ class _FunnalPageState extends State<FunnalPage> {
   int childs = 0;
   String timeSelected = "";
   String isTommorow = "";
+  List<String> selectedSeats = [];
+  get remaining => adults + childs + students - selectedSeats.length;
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +169,7 @@ class _FunnalPageState extends State<FunnalPage> {
                                 child: Container(
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: Colors.lightGreenAccent,
+                                    color: Color(0xffb5e200),
                                     borderRadius: BorderRadius.circular(18),
                                   ),
                                   child: Center(
@@ -233,25 +235,250 @@ class _FunnalPageState extends State<FunnalPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Image.asset("assets/images/seat_select.png"),
-                    Column(
-                      children: [
-                        Text(
-                          "4 seats to select",
-                          style: TextStyle(color: Colors.white, fontSize: 32),
-                        ),
-                        Text(
-                          "Make sure the seats are connected",
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                      ],
+                    Expanded(
+                      child: GridView.count(
+                        crossAxisCount: 5,
+                        children: [
+                          SizedBox(),
+                          Center(
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Text(
+                              "B",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Text(
+                              "C",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Text(
+                              "D",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+
+                          Center(
+                            child: Text(
+                              "1",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("1A") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("1A");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("1A");
+                                });
+                              }
+                            },
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: Image.asset("assets/images/seat_taken.png"),
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: Image.asset("assets/images/seat_taken.png"),
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("1D") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("1D");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("1D");
+                                });
+                              }
+                            },
+                          ),
+
+                          Center(
+                            child: Text(
+                              "2",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("2A") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("2A");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("2A");
+                                });
+                              }
+                            },
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("2B") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("2B");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("2B");
+                                });
+                              }
+                            },
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("2C") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("2C");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("2C");
+                                });
+                              }
+                            },
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("2D") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("2D");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("2D");
+                                });
+                              }
+                            },
+                          ),
+
+                          Center(
+                            child: Text(
+                              "3",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("3A") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("3A");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("3A");
+                                });
+                              }
+                            },
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("3B") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("3B");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("3B");
+                                });
+                              }
+                            },
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("3C") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("3C");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("3C");
+                                });
+                              }
+                            },
+                          ),
+                          SeatSelector(
+                            onTap: () {
+                              if (selectedSeats.contains("3D") &&
+                                  remaining >= 1) {
+                                setState(() {
+                                  selectedSeats.remove("3D");
+                                });
+                              } else {
+                                setState(() {
+                                  selectedSeats.add("3D");
+                                });
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 150,
+                      child: Column(
+                        children: [
+                          Text(
+                            "${(adults + childs + students) - selectedSeats.length} seats to select",
+                            style: TextStyle(color: Colors.white, fontSize: 32),
+                          ),
+                          Text(
+                            "Make sure the seats are connected",
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
             Container(
-              height: 65,
+              height: 90,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(18),
@@ -528,7 +755,7 @@ class _FunnalPageState extends State<FunnalPage> {
                   Expanded(
                     child: InkWell(
                       onTap: () {
-                        if ((adults + students + childs) >= 1) return;
+                        if ((adults + students + childs) <= 1) return;
                         setState(() {
                           currentStep++;
                         });
@@ -539,7 +766,7 @@ class _FunnalPageState extends State<FunnalPage> {
                           height: 50,
                           decoration: BoxDecoration(
                             color: (adults + students + childs) >= 1
-                                ? Colors.lightGreenAccent
+                                ? Color(0xffb5e200)
                                 : Colors.grey,
                             borderRadius: BorderRadius.circular(18),
                           ),
@@ -733,7 +960,7 @@ class _FunnalPageState extends State<FunnalPage> {
                           decoration: BoxDecoration(
                             color: timeSelected.isEmpty
                                 ? Colors.grey
-                                : Colors.lightGreenAccent,
+                                : Color(0xffb5e200),
                             borderRadius: BorderRadius.circular(18),
                           ),
                           child: Center(
@@ -751,6 +978,33 @@ class _FunnalPageState extends State<FunnalPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SeatSelector extends StatefulWidget {
+  const SeatSelector({super.key, required this.onTap});
+  final VoidCallback onTap;
+
+  @override
+  State<SeatSelector> createState() => _SeatSelectorState();
+}
+
+class _SeatSelectorState extends State<SeatSelector> {
+  bool isSelected = false;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        widget.onTap();
+        setState(() {
+          isSelected = !isSelected;
+        });
+      },
+      child: Image.asset(
+        "assets/images/seat_open.png",
+        color: isSelected ? Color(0xffb5e200) : null,
       ),
     );
   }

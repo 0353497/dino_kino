@@ -69,7 +69,10 @@ class ProfilePage extends StatelessWidget {
                                 child: InkWell(
                                   onTap: () {
                                     SharePlus.instance.share(
-                                      ShareParams(text: "Dino in space"),
+                                      ShareParams(
+                                        text:
+                                            "Dino in space for today 5:00PM with the seats 1A",
+                                      ),
                                     );
                                   },
                                   child: Image.asset("assets/images/share.png"),

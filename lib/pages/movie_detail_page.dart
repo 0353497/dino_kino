@@ -63,31 +63,31 @@ class MovieDetailPage extends StatelessWidget {
                                     Icon(
                                       Icons.star,
                                       color: rating > 1
-                                          ? Colors.greenAccent
+                                          ? Color(0xffb5e200)
                                           : Colors.grey,
                                     ),
                                     Icon(
                                       Icons.star,
                                       color: rating > 2
-                                          ? Colors.greenAccent
+                                          ? Color(0xffb5e200)
                                           : Colors.grey,
                                     ),
                                     Icon(
                                       Icons.star,
                                       color: rating > 3
-                                          ? Colors.greenAccent
+                                          ? Color(0xffb5e200)
                                           : Colors.grey,
                                     ),
                                     Icon(
                                       Icons.star,
                                       color: rating > 4
-                                          ? Colors.greenAccent
+                                          ? Color(0xffb5e200)
                                           : Colors.grey,
                                     ),
                                     Icon(
                                       Icons.star,
                                       color: rating > 5
-                                          ? Colors.greenAccent
+                                          ? Color(0xffb5e200)
                                           : Colors.grey,
                                     ),
                                   ],
@@ -106,7 +106,7 @@ class MovieDetailPage extends StatelessWidget {
                                     child: TextButton(
                                       style: ButtonStyle(
                                         backgroundColor: WidgetStatePropertyAll(
-                                          Colors.green,
+                                          Color(0xffb5e200),
                                         ),
                                         foregroundColor: WidgetStatePropertyAll(
                                           Colors.black,
@@ -131,6 +131,10 @@ class MovieDetailPage extends StatelessWidget {
               ),
             ),
             TabBar(
+              dividerColor: Colors.transparent,
+              indicatorColor: Color(0xffb5e200),
+              unselectedLabelColor: Color(0xffb5e200).withAlpha(100),
+              labelColor: Color(0xffb5e200),
               tabs: [
                 Tab(icon: Icon(Icons.house)),
                 Tab(icon: Icon(Icons.movie_creation)),
