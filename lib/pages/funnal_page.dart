@@ -15,8 +15,8 @@ class _FunnalPageState extends State<FunnalPage> {
   int adults = 2;
   int students = 0;
   int childs = 0;
-  String time = "";
-  bool isTommorow = false;
+  String timeSelected = "";
+  String isTommorow = "";
 
   @override
   Widget build(BuildContext context) {
@@ -80,14 +80,14 @@ class _FunnalPageState extends State<FunnalPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text("When", style: textStyle),
-                                Text("tomorrow", style: textStyle),
+                                Text(isTommorow, style: textStyle),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text("Time", style: textStyle),
-                                Text("5:00 PM", style: textStyle),
+                                Text(timeSelected, style: textStyle),
                               ],
                             ),
                             Row(
@@ -627,7 +627,8 @@ class _FunnalPageState extends State<FunnalPage> {
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            time = time["time"];
+                                            isTommorow = time["day"];
+                                            timeSelected = time["time"];
                                           });
                                         },
                                         child: Text(
@@ -661,7 +662,8 @@ class _FunnalPageState extends State<FunnalPage> {
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            time = time["time"];
+                                            isTommorow = time["day"];
+                                            timeSelected = time["time"];
                                           });
                                         },
                                         child: Text(
@@ -719,6 +721,7 @@ class _FunnalPageState extends State<FunnalPage> {
                   Expanded(
                     child: InkWell(
                       onTap: () {
+                        if (timeSelected.isEmpty) return;
                         setState(() {
                           currentStep++;
                         });
@@ -728,7 +731,7 @@ class _FunnalPageState extends State<FunnalPage> {
                         child: Container(
                           height: 50,
                           decoration: BoxDecoration(
-                            color: time.isEmpty
+                            color: timeSelected.isEmpty
                                 ? Colors.grey
                                 : Colors.lightGreenAccent,
                             borderRadius: BorderRadius.circular(18),
