@@ -1,0 +1,12 @@
+[
+  { "day": "today", "time": "10:00 AM", "available": false },
+  { "day": "today", "time": "2:30 PM", "available": false },
+  { "day": "today", "time": "5:00 PM", "available": true },
+  { "day": "today", "time": "7:00 PM", "available": false },
+  { "day": "today", "time": "9:00 PM", "available": true },
+  { "day": "tomorrow", "time": "10:00 AM", "available": true },
+  { "day": "tomorrow", "time": "2:30 PM", "available": true },
+  { "day": "tomorrow", "time": "5:00 PM", "available": true },
+  { "day": "tomorrow", "time": "7:00 PM", "available": true },
+  { "day": "tomorrow", "time": "9:00 PM", "available": true }
+]
