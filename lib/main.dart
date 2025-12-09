@@ -1,11 +1,15 @@
 import 'package:dino_kino/pages/homepage.dart';
 import 'package:dino_kino/pages/moviespage.dart';
 import 'package:dino_kino/pages/profile_page.dart';
+import 'package:dino_kino/providers/data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() {
+  Get.put(MovieData());
   runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
 class MyApp extends StatelessWidget {

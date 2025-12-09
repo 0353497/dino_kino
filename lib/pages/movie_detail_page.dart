@@ -134,7 +134,10 @@ class MovieDetailPage extends StatelessWidget {
                                         ),
                                       ),
                                       onPressed: () {
-                                        Get.to(() => FunnalPage());
+                                        Get.to(
+                                          () =>
+                                              FunnalPage(title: dino["title"]),
+                                        );
                                       },
                                       child: Text(
                                         "Buy Tickets",

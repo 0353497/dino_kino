@@ -1,10 +1,13 @@
 import 'package:dino_kino/main.dart';
+import 'package:dino_kino/providers/data.dart';
 import 'package:dino_kino/utils/json_reader.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
 class FunnalPage extends StatefulWidget {
-  const FunnalPage({super.key});
+  const FunnalPage({super.key, required this.title});
+  final String title;
 
   @override
   State<FunnalPage> createState() => _FunnalPageState();
@@ -76,7 +79,7 @@ class _FunnalPageState extends State<FunnalPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Dino In Space",
+                              widget.title,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 24,
@@ -110,7 +113,10 @@ class _FunnalPageState extends State<FunnalPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text("Seats", style: textStyle),
-                                Text("IA, 2A, 2B, 2C", style: textStyle),
+                                Text(
+                                  selectedSeats.join(", "),
+                                  style: textStyle,
+                                ),
                               ],
                             ),
                             Divider(color: Colors.grey),
@@ -122,7 +128,7 @@ class _FunnalPageState extends State<FunnalPage> {
                                   style: TextStyle(color: Colors.grey),
                                 ),
                                 Text(
-                                  "€ 44",
+                                  "€ ${adults * 12 + students * 10 + childs * 8}",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 24,
@@ -171,6 +177,22 @@ class _FunnalPageState extends State<FunnalPage> {
                           Expanded(
                             child: InkWell(
                               onTap: () {
+                                String tickets = "";
+                                if (adults > 0) tickets += "$adults adults ";
+                                if (students > 0) {
+                                  tickets += "$students students ";
+                                }
+                                if (childs > 0) tickets += "$childs chidren ";
+
+                                Get.find<MovieData>().addoverView(
+                                  OverView(
+                                    title: widget.title,
+                                    day: isTommorow,
+                                    time: timeSelected,
+                                    tickets: tickets,
+                                    seats: selectedSeats.join(", "),
+                                  ),
+                                );
                                 Get.to(() => MainViewPage(initialIndex: 2));
                               },
                               child: Padding(
