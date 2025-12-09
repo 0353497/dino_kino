@@ -51,7 +51,13 @@ class MovieDetailPage extends StatelessWidget {
                                 Positioned(
                                   top: 50,
                                   right: 10,
-                                  child: Icon(Icons.close, color: Colors.white),
+                                  child: IconButton(
+                                    onPressed: () => Get.back(),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
