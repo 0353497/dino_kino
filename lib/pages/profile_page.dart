@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -65,7 +66,14 @@ class ProfilePage extends StatelessWidget {
                               ),
                               Align(
                                 alignment: Alignment(.8, -.8),
-                                child: Image.asset("assets/images/share.png"),
+                                child: InkWell(
+                                  onTap: () {
+                                    SharePlus.instance.share(
+                                      ShareParams(text: "Dino in space"),
+                                    );
+                                  },
+                                  child: Image.asset("assets/images/share.png"),
+                                ),
                               ),
                             ],
                           ),
