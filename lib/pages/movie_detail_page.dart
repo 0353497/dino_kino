@@ -38,24 +38,36 @@ class MovieDetailPage extends StatelessWidget {
                         ),
                       ),
                       Column(
+                        spacing: 16,
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadiusGeometry.only(
                               bottomLeft: Radius.circular(16),
                               bottomRight: Radius.circular(16),
                             ),
-                            child: Image.asset("assets/${dino["image"]}"),
+                            child: Stack(
+                              children: [
+                                Image.asset("assets/${dino["image"]}"),
+                                Positioned(
+                                  top: 50,
+                                  right: 10,
+                                  child: Icon(Icons.close, color: Colors.white),
+                                ),
+                              ],
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              spacing: 12,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "${dino["title"]}",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 24,
+                                    fontSize: 32,
                                   ),
                                 ),
                                 Row(
@@ -96,9 +108,10 @@ class MovieDetailPage extends StatelessWidget {
                                   "${dino["description"]}",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 24,
+                                    fontSize: 16,
                                   ),
                                 ),
+                                SizedBox(height: 32),
                                 Center(
                                   child: SizedBox(
                                     width: Get.width - 50,
@@ -111,11 +124,25 @@ class MovieDetailPage extends StatelessWidget {
                                         foregroundColor: WidgetStatePropertyAll(
                                           Colors.black,
                                         ),
+                                        shape: WidgetStatePropertyAll(
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadiusGeometry.circular(
+                                                  16,
+                                                ),
+                                          ),
+                                        ),
                                       ),
                                       onPressed: () {
                                         Get.to(() => FunnalPage());
                                       },
-                                      child: Text("Buy Tickets"),
+                                      child: Text(
+                                        "Buy Tickets",
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),

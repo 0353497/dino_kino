@@ -21,12 +21,14 @@ class MyApp extends StatelessWidget {
 }
 
 class MainViewPage extends StatelessWidget {
-  const MainViewPage({super.key});
+  const MainViewPage({super.key, this.initialIndex = 0});
+  final int initialIndex;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DefaultTabController(
+        initialIndex: initialIndex,
         length: 3,
         child: Column(
           children: [

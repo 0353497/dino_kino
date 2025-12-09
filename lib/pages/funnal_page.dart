@@ -45,7 +45,11 @@ class _FunnalPageState extends State<FunnalPage> {
                       children: [
                         IconButton(
                           onPressed: () => Get.back(),
-                          icon: Icon(Icons.close, color: Colors.white),
+                          icon: Icon(
+                            Icons.close,
+                            color: Colors.white,
+                            size: 48,
+                          ),
                         ),
                       ],
                     ),
@@ -66,7 +70,7 @@ class _FunnalPageState extends State<FunnalPage> {
                       width: double.maxFinite,
                       height: Get.height / 2,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,7 +117,10 @@ class _FunnalPageState extends State<FunnalPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("To pay at the cinama"),
+                                Text(
+                                  "To pay at the cinama",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
                                 Text(
                                   "€ 44",
                                   style: TextStyle(
@@ -127,8 +134,10 @@ class _FunnalPageState extends State<FunnalPage> {
                         ),
                       ),
                     ),
+                    Spacer(),
+
                     Container(
-                      height: 65,
+                      height: 90,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(18),
@@ -162,20 +171,25 @@ class _FunnalPageState extends State<FunnalPage> {
                           Expanded(
                             child: InkWell(
                               onTap: () {
-                                Get.to(() => MainViewPage());
+                                Get.to(() => MainViewPage(initialIndex: 2));
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                  height: 50,
+                                  height: 70,
                                   decoration: BoxDecoration(
                                     color: Color(0xffb5e200),
                                     borderRadius: BorderRadius.circular(18),
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "Confirm Tickets",
+                                      "Confirm tickets",
                                       textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24,
+                                        color: Colors.black,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -197,7 +211,7 @@ class _FunnalPageState extends State<FunnalPage> {
   SafeArea seatSelection() {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -206,7 +220,7 @@ class _FunnalPageState extends State<FunnalPage> {
               children: [
                 IconButton(
                   onPressed: () => Get.back(),
-                  icon: Icon(Icons.close, color: Colors.white),
+                  icon: Icon(Icons.close, color: Colors.white, size: 32),
                 ),
               ],
             ),
@@ -216,10 +230,11 @@ class _FunnalPageState extends State<FunnalPage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  spacing: 24,
                   children: [
                     Text("screen", style: TextStyle(color: Colors.white)),
                     Container(
-                      height: 4,
+                      height: 6,
                       width: Get.width - 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
@@ -236,226 +251,233 @@ class _FunnalPageState extends State<FunnalPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(
-                      child: GridView.count(
-                        crossAxisCount: 5,
-                        children: [
-                          SizedBox(),
-                          Center(
-                            child: Text(
-                              "A",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
+                      child: Transform.translate(
+                        offset: Offset(-16, 0),
+                        child: GridView.count(
+                          crossAxisCount: 5,
+                          children: [
+                            SizedBox(),
+                            Center(
+                              child: Text(
+                                "A",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          ),
-                          Center(
-                            child: Text(
-                              "B",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
+                            Center(
+                              child: Text(
+                                "B",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          ),
-                          Center(
-                            child: Text(
-                              "C",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
+                            Center(
+                              child: Text(
+                                "C",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          ),
-                          Center(
-                            child: Text(
-                              "D",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
+                            Center(
+                              child: Text(
+                                "D",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          ),
 
-                          Center(
-                            child: Text(
-                              "1",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
+                            Center(
+                              child: Text(
+                                "1",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          ),
 
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("1A") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("1A");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("1A");
-                                });
-                              }
-                            },
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Image.asset("assets/images/seat_taken.png"),
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Image.asset("assets/images/seat_taken.png"),
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("1D") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("1D");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("1D");
-                                });
-                              }
-                            },
-                          ),
-
-                          Center(
-                            child: Text(
-                              "2",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("1A") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("1A");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("1A");
+                                  });
+                                }
+                              },
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Image.asset(
+                                "assets/images/seat_taken.png",
                               ),
                             ),
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("2A") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("2A");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("2A");
-                                });
-                              }
-                            },
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("2B") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("2B");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("2B");
-                                });
-                              }
-                            },
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("2C") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("2C");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("2C");
-                                });
-                              }
-                            },
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("2D") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("2D");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("2D");
-                                });
-                              }
-                            },
-                          ),
-
-                          Center(
-                            child: Text(
-                              "3",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
+                            InkWell(
+                              onTap: () {},
+                              child: Image.asset(
+                                "assets/images/seat_taken.png",
                               ),
                             ),
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("3A") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("3A");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("3A");
-                                });
-                              }
-                            },
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("3B") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("3B");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("3B");
-                                });
-                              }
-                            },
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("3C") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("3C");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("3C");
-                                });
-                              }
-                            },
-                          ),
-                          SeatSelector(
-                            onTap: () {
-                              if (selectedSeats.contains("3D") &&
-                                  remaining >= 1) {
-                                setState(() {
-                                  selectedSeats.remove("3D");
-                                });
-                              } else {
-                                setState(() {
-                                  selectedSeats.add("3D");
-                                });
-                              }
-                            },
-                          ),
-                        ],
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("1D") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("1D");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("1D");
+                                  });
+                                }
+                              },
+                            ),
+
+                            Center(
+                              child: Text(
+                                "2",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("2A") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("2A");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("2A");
+                                  });
+                                }
+                              },
+                            ),
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("2B") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("2B");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("2B");
+                                  });
+                                }
+                              },
+                            ),
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("2C") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("2C");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("2C");
+                                  });
+                                }
+                              },
+                            ),
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("2D") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("2D");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("2D");
+                                  });
+                                }
+                              },
+                            ),
+
+                            Center(
+                              child: Text(
+                                "3",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("3A") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("3A");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("3A");
+                                  });
+                                }
+                              },
+                            ),
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("3B") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("3B");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("3B");
+                                  });
+                                }
+                              },
+                            ),
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("3C") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("3C");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("3C");
+                                  });
+                                }
+                              },
+                            ),
+                            SeatSelector(
+                              onTap: () {
+                                if (selectedSeats.contains("3D") &&
+                                    remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.remove("3D");
+                                  });
+                                } else if (remaining >= 1) {
+                                  setState(() {
+                                    selectedSeats.add("3D");
+                                  });
+                                }
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -464,7 +486,7 @@ class _FunnalPageState extends State<FunnalPage> {
                         children: [
                           Text(
                             "${(adults + childs + students) - selectedSeats.length} seats to select",
-                            style: TextStyle(color: Colors.white, fontSize: 32),
+                            style: TextStyle(color: Colors.white, fontSize: 24),
                           ),
                           Text(
                             "Make sure the seats are connected",
@@ -489,7 +511,7 @@ class _FunnalPageState extends State<FunnalPage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      width: 40,
+                      width: 60,
                       decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(18),
@@ -513,18 +535,21 @@ class _FunnalPageState extends State<FunnalPage> {
                           currentStep++;
                         });
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "To overview",
-                              textAlign: TextAlign.center,
+                      child: Container(
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: selectedSeats.isEmpty
+                              ? Colors.grey.shade300
+                              : Color(0xffb5e200),
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "To the overview",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.grey.shade700,
                             ),
                           ),
                         ),
@@ -562,8 +587,10 @@ class _FunnalPageState extends State<FunnalPage> {
               style: TextStyle(color: Colors.white, fontSize: 32),
             ),
             Text("Maximum of 4", style: TextStyle(color: Colors.white)),
+            SizedBox(height: 32),
             Expanded(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -584,6 +611,11 @@ class _FunnalPageState extends State<FunnalPage> {
                       Row(
                         children: [
                           IconButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                adults == 0 ? Colors.black45 : Colors.black,
+                              ),
+                            ),
                             onPressed: () {
                               if (adults < 1) return;
 
@@ -591,13 +623,21 @@ class _FunnalPageState extends State<FunnalPage> {
                                 adults--;
                               });
                             },
-                            icon: Icon(Icons.minimize, color: Colors.white),
+                            icon: Icon(
+                              Icons.minimize,
+                              color: adults == 0 ? Colors.black : Colors.white,
+                            ),
                           ),
                           Text(
                             "$adults",
                             style: TextStyle(color: Colors.white),
                           ),
                           IconButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                adults == 0 ? Colors.black45 : Colors.black,
+                              ),
+                            ),
                             onPressed: () {
                               if ((adults + students + childs) >= 4) return;
                               setState(() {
@@ -631,6 +671,11 @@ class _FunnalPageState extends State<FunnalPage> {
                       Row(
                         children: [
                           IconButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                students == 0 ? Colors.black45 : Colors.black,
+                              ),
+                            ),
                             onPressed: () {
                               if (students < 1) return;
 
@@ -638,13 +683,23 @@ class _FunnalPageState extends State<FunnalPage> {
                                 students--;
                               });
                             },
-                            icon: Icon(Icons.minimize, color: Colors.white),
+                            icon: Icon(
+                              Icons.minimize,
+                              color: students == 0
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
                           ),
                           Text(
                             "$students",
                             style: TextStyle(color: Colors.white),
                           ),
                           IconButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                adults == 0 ? Colors.black45 : Colors.black,
+                              ),
+                            ),
                             onPressed: () {
                               if ((adults + students + childs) >= 4) return;
 
@@ -679,19 +734,32 @@ class _FunnalPageState extends State<FunnalPage> {
                       Row(
                         children: [
                           IconButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                childs == 0 ? Colors.black45 : Colors.black,
+                              ),
+                            ),
                             onPressed: () {
                               if (childs < 1) return;
                               setState(() {
                                 childs--;
                               });
                             },
-                            icon: Icon(Icons.minimize, color: Colors.white),
+                            icon: Icon(
+                              Icons.minimize,
+                              color: childs == 0 ? Colors.black : Colors.white,
+                            ),
                           ),
                           Text(
                             "$childs",
                             style: TextStyle(color: Colors.white),
                           ),
                           IconButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                adults == 0 ? Colors.black45 : Colors.black,
+                              ),
+                            ),
                             onPressed: () {
                               if ((adults + students + childs) >= 4) return;
 
@@ -723,8 +791,9 @@ class _FunnalPageState extends State<FunnalPage> {
                 ],
               ),
             ),
+            SizedBox(height: 100),
             Container(
-              height: 65,
+              height: 90,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(18),
@@ -763,7 +832,7 @@ class _FunnalPageState extends State<FunnalPage> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 50,
+                          height: 70,
                           decoration: BoxDecoration(
                             color: (adults + students + childs) >= 1
                                 ? Color(0xffb5e200)
@@ -774,6 +843,10 @@ class _FunnalPageState extends State<FunnalPage> {
                             child: Text(
                               "Pick your seats",
                               textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 24,
+                              ),
                             ),
                           ),
                         ),
@@ -845,6 +918,20 @@ class _FunnalPageState extends State<FunnalPage> {
                                     if (time["day"] == "today")
                                       TextButton(
                                         style: ButtonStyle(
+                                          shape: WidgetStatePropertyAll(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadiusGeometry.circular(
+                                                    16,
+                                                  ),
+                                            ),
+                                          ),
+                                          padding: WidgetStatePropertyAll(
+                                            EdgeInsets.symmetric(
+                                              vertical: 24,
+                                              horizontal: 16,
+                                            ),
+                                          ),
                                           backgroundColor:
                                               WidgetStatePropertyAll(
                                                 time["available"]
@@ -867,6 +954,9 @@ class _FunnalPageState extends State<FunnalPage> {
                                             decoration: time["available"]
                                                 ? null
                                                 : TextDecoration.lineThrough,
+                                            decorationColor: time["available"]
+                                                ? Colors.white
+                                                : Colors.black,
                                           ),
                                         ),
                                       ),
@@ -886,6 +976,20 @@ class _FunnalPageState extends State<FunnalPage> {
                                                     ? Colors.black
                                                     : Colors.black45,
                                               ),
+                                          shape: WidgetStatePropertyAll(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadiusGeometry.circular(
+                                                    16,
+                                                  ),
+                                            ),
+                                          ),
+                                          padding: WidgetStatePropertyAll(
+                                            EdgeInsets.symmetric(
+                                              vertical: 24,
+                                              horizontal: 16,
+                                            ),
+                                          ),
                                         ),
                                         onPressed: () {
                                           setState(() {
@@ -917,7 +1021,7 @@ class _FunnalPageState extends State<FunnalPage> {
               ),
             ),
             Container(
-              height: 65,
+              height: 90,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(18),
@@ -956,7 +1060,7 @@ class _FunnalPageState extends State<FunnalPage> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 50,
+                          height: 70,
                           decoration: BoxDecoration(
                             color: timeSelected.isEmpty
                                 ? Colors.grey
@@ -967,6 +1071,10 @@ class _FunnalPageState extends State<FunnalPage> {
                             child: Text(
                               "Select Tickets",
                               textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 24,
+                              ),
                             ),
                           ),
                         ),
