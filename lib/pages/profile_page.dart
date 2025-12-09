@@ -121,7 +121,8 @@ class OverViewCard extends StatelessWidget {
                       onTap: () {
                         SharePlus.instance.share(
                           ShareParams(
-                            text: "$title $time with the seats $seats",
+                            text:
+                                "I made a reservation for $title $time with the seats $seats",
                           ),
                         );
                       },
